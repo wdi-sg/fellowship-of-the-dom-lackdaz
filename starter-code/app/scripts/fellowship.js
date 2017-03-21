@@ -1,4 +1,4 @@
-console.log("Linked.");
+// console.log("Linked.");
 
 // Dramatis Personae
 var hobbits = [
@@ -48,9 +48,22 @@ makeMiddleEarth();
 // Part 2
 
 function makeHobbits() {
-  // display an unordered list of hobbits in the shire (which is the second article tag on the page)
+  // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
+
+  var hobbitsList = document.createElement('ul')
+  var shire = document.querySelector('article:first-child')
+
+  hobbits.forEach(function(hobbit) {
+      var hobbitLi = document.createElement('li')
+      var hobbitClass = hobbitLi.setAttribute('class','hobbit')
+      hobbitLi.textContent = hobbit
+      hobbitsList.appendChild(hobbitLi)
+  })
+  shire.appendChild(hobbitsList)
 }
+
+makeHobbits()
 
 // Part 3
 
@@ -59,32 +72,77 @@ function keepItSecretKeepItSafe() {
   // give the div a class of 'magic-imbued-jewelry'
   // add an event listener so that when a user clicks on the ring, the nazgulScreech function (provided) is invoked
   // add the ring as a child of Frodo
+  var thering = document.createElement('div')
+  thering.id = 'the-ring'
+  thering.setAttribute('class','magic-imbued-jewelry')
+  thering.addEventListener('click',nazgulScreech)
+  var frodo = document.querySelectorAll('li.hobbit')[0]
+  frodo.appendChild(thering)
+
 }
 
+keepItSecretKeepItSafe()
 
 // Part 4
 
 
 function makeBuddies() {
+
   // create an aside tag
   // attach an unordered list of the 'buddies' in the aside
   // insert your aside as a child element of rivendell
-}
 
+  var aside = document.createElement('aside')
+  var buddiesList = document.createElement('ul')
+  aside.appendChild(buddiesList)
+
+  buddies.forEach(function(buddy) {
+      var buddiesLi = document.createElement('li')
+      var buddiesClass = buddiesLi.setAttribute('class','buddies')
+      buddiesLi.textContent = buddy
+      buddiesList.appendChild(buddiesLi)
+  })
+
+  var rivendell = document.querySelectorAll('article')[1]
+  rivendell.appendChild(aside)
+
+}
+makeBuddies()
 
 // Part 5
 
 
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
+  var aside = document.createElement('aside')
+  var buddyArr = document.querySelectorAll('li.buddies')
+  var striderIndex = buddies.indexOf("Strider")
+  buddyArr[striderIndex].textContent = "Aragon"
+
 }
 
+beautifulStranger()
 
 // Part 6
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+
+var hobbitsUl = document.querySelectorAll('ul')[0]
+
+
+var shire = document.querySelector('article:first-child')
+var rivendell = document.querySelector('aside')
+
+rivendell.appendChild(hobbitsUl)
+
+// hobbitsArr.forEach(function(hobbit) {
+//   var hobbitMove = hobbitsUl.removeChild(hobbit)
+//   buddiesUl.appendChild(hobbitMove)
+// })
+
 }
+leaveTheShire()
 
 
 // Part 7
@@ -94,16 +152,50 @@ function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
-}
+  var fellowship = document.createElement('div')
+  var rivendell = document.querySelector('aside')
+  rivendell.appendChild(fellowship)
+  var hobbitsArr = document.querySelectorAll('li.hobbit')
+  var buddiesArr = document.querySelectorAll('li.buddies')
 
+  buddiesArr.forEach(function(buddy) {
+    fellowship.appendChild(buddy)
+  })
+  alert("The buddies have joined your party")
+
+  hobbitsArr.forEach(function(hobbit) {
+    fellowship.appendChild(hobbit)
+  })
+  alert("The hobbits have joined your party")
+
+}
+forgeTheFellowShip()
 
 // Part 8
 
 
 function theBalrog() {
+
   // change the 'Gandalf' textNode to 'Gandalf the White'
   // apply style to the element
   // make the background 'white', add a grey border
+
+  // listitems.forEach(function(a, index) {
+  //     if(a.textContent === 'Frodo Baggins') { console.log(index) } else { console.log('not found') } } )
+
+  var list = document.querySelectorAll('li.buddies')
+  var gandalf = list[0]
+  var gandalf.textContent = 'Gandalf the White'
+
+  // var buddiesArr = list.forEach(function(a, index) {
+  //   if (a.textContent.toLowerCase() === 'gandalf the grey') {
+  //     return a.textContent.toLowerCase()
+  //   }
+  // })
+  //
+  // var gandalfIndex = buddiesArr.indexOf("gandalf")
+
+
 }
 
 
