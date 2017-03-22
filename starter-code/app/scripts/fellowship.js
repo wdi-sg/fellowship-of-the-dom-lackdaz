@@ -185,7 +185,7 @@ function theBalrog() {
 
   var list = document.querySelectorAll('li.buddies')
   var gandalf = list[0]
-  var gandalf.textContent = 'Gandalf the White'
+  gandalf.textContent = 'Gandalf the White'
 
   // var buddiesArr = list.forEach(function(a, index) {
   //   if (a.textContent.toLowerCase() === 'gandalf the grey') {
@@ -194,10 +194,11 @@ function theBalrog() {
   // })
   //
   // var gandalfIndex = buddiesArr.indexOf("gandalf")
-
+  gandalf.style.background = 'white'
+  gandalf.style.border = "thick solid grey"
 
 }
-
+theBalrog()
 
 // Part 9
 
@@ -206,14 +207,26 @@ function hornOfGondor() {
   // Boromir's been killed by the Uruk-hai!
   // put a linethrough on boromir's name
   // Remove Boromir from the Fellowship
-}
 
+  var list = document.querySelectorAll('li.buddies')
+  var boromir = list[4]
+  alert("the horn of gondor has been blown")
+  boromir.setProperty('text-decoration', 'line-through')
+  var rivendell = document.querySelector('aside')
+  var rivendell = document.querySelector('fellowship')
+
+  fellowship.removeChild(boromir)
+
+}
+hornOfGondor()
 
 // Part 10
 
 function itsDangerousToGoAlone(){
   // take Frodo and Sam out of the fellowship and move them to Mordor
   // add a div with an id of 'mount-doom' to Mordor
+
+
 }
 
 
